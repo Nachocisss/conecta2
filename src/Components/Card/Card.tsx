@@ -1,9 +1,11 @@
 import React from "react";
-
+import "./Card.css";
 const Card = () => {
   return (
-    <div className="CardContainer">
-      <span>A3</span>
+    <div className="cardContainer">
+      <div className="textContainer">
+        <span className="cardText">A3</span>
+      </div>
     </div>
   );
 };

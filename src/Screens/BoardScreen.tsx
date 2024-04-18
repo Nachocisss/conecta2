@@ -4,7 +4,7 @@ import "./Screens.css";
 
 const GameScreen = () => {
   return (
-    <div className="screen">
+    <div className="boardScreen">
       <Board />
     </div>
   );

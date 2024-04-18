@@ -4,7 +4,7 @@ import "./Screens.css";
 
 const CardScreen = () => {
   return (
-    <div className="screen">
+    <div className="cardScreen">
       <Card />
     </div>
   );

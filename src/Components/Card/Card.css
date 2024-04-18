@@ -1,4 +1,18 @@
-.CardContainer {
-  height: 250px;
-  width: 200px;
+.cardContainer {
+  height: 350px;
+  width: 250px;
+  border-radius: 10px;
+  border: 10px solid #a63979;
+  background-color: #ffffff9d;
+
+  display: flex;
+}
+.textContainer {
+  text-align: center;
+  margin: auto;
+}
+.cardText {
+  font-size: 80px;
+  font-weight: 1000;
+  color: #bc0f74;
 }

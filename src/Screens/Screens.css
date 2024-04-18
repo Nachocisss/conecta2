@@ -1,3 +1,8 @@
-.screen {
+.boardScreen {
   flex: 1;
+}
+.cardScreen {
+  flex: 1;
+  align-content: flex-end;
+  margin: 0px 20px;
 }
