@@ -1,11 +1,15 @@
-import GameScreen from './Screens/GameScreen.tsx'
+import BoardScreen from './Screens/BoardScreen.tsx'
+import CardScreen from './Screens/CardScreen.tsx'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <GameScreen/>   
+        <div className='AppScreen'>
+        <BoardScreen/>   
+        <CardScreen/>
+        </div>
       </header>
     </div>
   );

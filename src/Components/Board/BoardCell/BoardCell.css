@@ -9,3 +9,10 @@
   align-content: center;
   text-align: center;
 }
+.boardCell:hover {
+  background-color: #df89f5;
+  height: 105px;
+  width: 105px;
+  margin: 0px;
+  border: 6px solid #34aeae;
+}
