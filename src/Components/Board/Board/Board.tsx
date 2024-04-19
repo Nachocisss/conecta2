@@ -1,7 +1,8 @@
 import React from "react";
-import BoardCell from "../BoardCell/BoardCell.tsx";
+import BoardCell from "../../Cells/BoardCell/BoardCell.tsx";
 import "./Board.css";
-import CoordinatesCell from "../CoordinatesCells/CoordinatesCell.tsx/CoordinatesCell.tsx";
+import CoordinatesCell from "../../Cells/CoordinatesCells/CoordinatesCell.tsx/CoordinatesCell.tsx";
+import ImageCell from "../../Cells/ImageCell/ImageCell.tsx";
 
 const letters = ["A", "B", "C", "D", "E"];
 
@@ -17,6 +18,7 @@ const row = (rowNumber: number) => {
     </div>
   );
 };
+
 const firstCoordinatesRow = () => {
   const firtsRow = [];
   for (let i = 0; i < 6; i++) {
@@ -24,10 +26,17 @@ const firstCoordinatesRow = () => {
   }
   return <div className="boardRow">{firtsRow}</div>;
 };
+const firstImagesRow = () => {
+  const firtsImageRow = [];
+  for (let i = 0; i < 6; i++) {
+    firtsImageRow.push(<ImageCell tag={i} loadImage={false} />);
+  }
+  return <div className="boardRow">{firtsImageRow}</div>;
+};
 
 const Board = () => {
   const columnsAndRows = () => {
-    const board = [firstCoordinatesRow()];
+    const board = [firstCoordinatesRow(), firstImagesRow()];
     for (let j = 0; j < 5; j++) {
       board.push(row(letters[j]));
     }

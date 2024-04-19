@@ -8,12 +8,15 @@
   color: black;
   align-content: center;
   text-align: center;
+  font-size: 50px;
+  font-weight: 800;
+  color: #bc0f74;
 }
 
 .CoordinatesDummyCell {
   height: 100px;
   width: 100px;
-  margin: 5px;
+  margin: 10px;
   align-content: center;
   text-align: center;
 }
