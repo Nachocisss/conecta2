@@ -2,48 +2,39 @@ import React from "react";
 import BoardCell from "../../Cells/BoardCell/BoardCell.tsx";
 import "./Board.css";
 import CoordinatesCell from "../../Cells/CoordinatesCells/CoordinatesCell.tsx/CoordinatesCell.tsx";
-import ImageCell from "../../Cells/ImageCell/ImageCell.tsx";
 
 const letters = ["A", "B", "C", "D", "E"];
 
-const row = (rowNumber: number) => {
-  const cell = [];
+const dummyCell = <CoordinatesCell tag={""} isDummy={true} />;
+
+const rowCreator = (isFirstRow, Component, rawNumber = "") => {
+  const row = isFirstRow ? [dummyCell, dummyCell] : [];
   for (let i = 1; i < 6; i++) {
-    cell.push(<BoardCell tag={rowNumber + i} />);
+    const tag = isFirstRow ? i : rawNumber + i;
+    row.push(<Component tag={tag} />);
   }
   return (
     <div className="boardRow">
-      <CoordinatesCell tag={rowNumber} />
-      {cell}
+      {!isFirstRow && (
+        <>
+          <CoordinatesCell tag={rawNumber} />
+          <CoordinatesCell tag={"i"} />
+        </>
+      )}
+      {row}
     </div>
   );
 };
 
-const firstCoordinatesRow = () => {
-  const firtsRow = [];
-  for (let i = 0; i < 6; i++) {
-    firtsRow.push(<CoordinatesCell tag={i} isDummy={i === 0} />);
-  }
-  return <div className="boardRow">{firtsRow}</div>;
-};
-const firstImagesRow = () => {
-  const firtsImageRow = [];
-  for (let i = 0; i < 6; i++) {
-    firtsImageRow.push(<ImageCell tag={i} loadImage={false} />);
-  }
-  return <div className="boardRow">{firtsImageRow}</div>;
-};
-
 const Board = () => {
-  const columnsAndRows = () => {
-    const board = [firstCoordinatesRow(), firstImagesRow()];
-    for (let j = 0; j < 5; j++) {
-      board.push(row(letters[j]));
-    }
-    return board;
-  };
-
-  return columnsAndRows();
+  const board = [
+    rowCreator(true, CoordinatesCell),
+    rowCreator(true, CoordinatesCell),
+  ];
+  for (let rawNumber = 0; rawNumber < 5; rawNumber++) {
+    board.push(rowCreator(false, BoardCell, letters[rawNumber]));
+  }
+  return board;
 };
 
 export default Board;
