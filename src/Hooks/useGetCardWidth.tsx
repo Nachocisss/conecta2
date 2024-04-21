@@ -1,22 +1,21 @@
 import { useState, useEffect } from "react";
+const CARDS_ON_ROW = 7;
 
 function useGetCardSize() {
   const cardOnRight = window.screen.width > 768;
-  const marginCards = 3 * 2 * 7;
-  const marginTotal = cardOnRight ? marginCards + 260 : marginCards + 360;
 
   const [cardSize, setCardSize] = useState({
-    isWidth: false,
-    width: window.screen.width / 7,
-    height: window.screen.height / 7,
+    cardOnRight: false,
+    width: window.screen.width / CARDS_ON_ROW,
+    height: window.screen.height / CARDS_ON_ROW,
   });
 
   useEffect(() => {
     const updateCardSize = () => {
       setCardSize({
-        isWidth: cardSize.width < cardSize.height,
-        width: window.screen.width / 7,
-        height: window.screen.height / 7,
+        cardOnRight: window.screen.width < 768,
+        width: window.screen.width / CARDS_ON_ROW,
+        height: window.screen.height / CARDS_ON_ROW,
       });
     };
     window.addEventListener("resize", updateCardSize);

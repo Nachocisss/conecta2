@@ -3,8 +3,8 @@ import "./CoordinatesCell.css";
 import useGetCardWidth from "../../../../Hooks/useGetCardWidth.tsx";
 
 const CoordinatesCell = (props) => {
-  const { isWidth, width, height } = useGetCardWidth();
-  const cardStyle = isWidth ? { width: width } : { height: height };
+  const { cardOnRight, width, height } = useGetCardWidth();
+  const cardStyle = cardOnRight ? { width: width } : { height: height };
   return (
     <div
       className={props.isDummy ? "CoordinatesDummyCell" : "CoordinatesCell"}
