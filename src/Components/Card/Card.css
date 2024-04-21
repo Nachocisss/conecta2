@@ -4,8 +4,8 @@
   border-radius: 10px;
   border: 10px solid #a63979;
   background-color: #ffffff9d;
-
   display: flex;
+  margin: 20px auto;
 }
 .textContainer {
   text-align: center;

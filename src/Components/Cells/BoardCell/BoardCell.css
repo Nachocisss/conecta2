@@ -1,8 +1,7 @@
 .boardCell {
   background-color: #eab2f8;
-  height: 100px;
-  width: 100px;
-  margin: 5px;
+  aspect-ratio: 1;
+  margin: 3px;
   border-radius: 10px;
   border: 4px solid #34aeae;
   color: black;
@@ -11,8 +10,6 @@
 }
 .boardCell:hover {
   background-color: #df89f5;
-  height: 105px;
-  width: 105px;
   margin: 0px;
-  border: 6px solid #34aeae;
+  border: 7px solid #34aeae;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import Board from "../Components/Board/Board/Board.tsx";
 import "./Screens.css";
 
-const GameScreen = () => {
+const BoardScreen = () => {
   return (
     <div className="boardScreen">
       <Board />
@@ -10,4 +10,4 @@ const GameScreen = () => {
   );
 };
 
-export default GameScreen;
+export default BoardScreen;
