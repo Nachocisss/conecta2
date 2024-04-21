@@ -1,13 +1,13 @@
 .boardCell {
   background-color: #eab2f8;
-  aspect-ratio: 1;
   margin: 3px;
   border-radius: 10px;
   border: 4px solid #34aeae;
   color: black;
   align-content: center;
   text-align: center;
-  flex: 1;
+  width: 10vh;
+  height: 10vh;
 }
 .boardCell:hover {
   background-color: #df89f5;

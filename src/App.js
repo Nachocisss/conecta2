@@ -1,13 +1,13 @@
-import BoardScreen from "./Screens/BoardScreen.tsx";
-import CardScreen from "./Screens/CardScreen.tsx";
+import GameScreen from "./Screens/GameScreen.tsx";
 import "./App.css";
+import ExitAlert from "./Screens/Header.tsx";
 
 function App() {
   return (
-    <div className="App">
-      <BoardScreen />
-      <CardScreen />
-    </div>
+    <>
+      <ExitAlert />
+      <GameScreen />
+    </>
   );
 }
 

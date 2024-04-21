@@ -1,10 +1,15 @@
 .boardScreen {
-  flex: 3;
-  background-color: rgb(91, 73, 45);
+  flex: 2;
   justify-content: center;
   align-items: center;
+  margin: 16px;
 }
 .cardScreen {
   flex: 1;
   margin: 0px 20px;
+}
+
+.headerContainer {
+  text-align: center;
+  color: aliceblue;
 }

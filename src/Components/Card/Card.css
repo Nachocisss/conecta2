@@ -1,9 +1,16 @@
 .cardContainer {
-  height: 350px;
-  width: 250px;
+  aspect-ratio: 1/1.5;
+  width: 60%;
   border-radius: 10px;
   border: 10px solid #a63979;
   background-color: #ffffff9d;
+  display: flex;
+  margin: 20px auto;
+}
+
+.cardContainer:hover {
+  border: 14px solid #a63979;
+  background-color: #c7bfbf9d;
   display: flex;
   margin: 20px auto;
 }
