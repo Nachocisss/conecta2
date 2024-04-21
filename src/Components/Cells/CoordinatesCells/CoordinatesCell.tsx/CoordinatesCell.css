@@ -10,10 +10,12 @@
   font-size: 30px;
   font-weight: 800;
   color: #bc0f74;
+  flex: 1;
 }
 
 .CoordinatesDummyCell {
   aspect-ratio: 1;
+  flex: 1;
   margin: 3px;
   border: 4px solid transparent;
   align-content: center;
