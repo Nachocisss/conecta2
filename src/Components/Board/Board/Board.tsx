@@ -2,7 +2,6 @@ import React from "react";
 import BoardCell from "../../Cells/BoardCell/BoardCell.tsx";
 import "./Board.css";
 import CoordinatesCell from "../../Cells/CoordinatesCells/CoordinatesCell.tsx/CoordinatesCell.tsx";
-import { useCoordinate } from "../../../Contexts/CoordinatesContext.tsx";
 
 const letters = ["A", "B", "C", "D", "E"];
 
