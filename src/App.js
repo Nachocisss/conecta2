@@ -1,13 +1,14 @@
 import GameScreen from "./Screens/GameScreen.tsx";
 import "./App.css";
-import ExitAlert from "./Screens/Header.tsx";
+import Header from "./Screens/Header.tsx";
+import { CoordinatesProvider } from "./Contexts/CoordinatesContext.tsx";
 
 function App() {
   return (
-    <>
-      <ExitAlert />
+    <CoordinatesProvider>
+      <Header />
       <GameScreen />
-    </>
+    </CoordinatesProvider>
   );
 }
 
