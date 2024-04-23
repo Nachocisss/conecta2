@@ -1,10 +1,11 @@
 import React, { createContext, useState, useContext } from "react";
 import { createCoordinatesObject } from "../Utils/createCoordinatesObject.tsx";
+import gameStatus from "../Utils/gameStatus.tsx";
 
 const CoordinatesContext = createContext({
   coordinates: {},
   currentCoord: "",
-  isGuessing: false,
+  isGuessing: gameStatus.waiting,
   generateRamdomCoordinate: () => {},
   guessCoordinate: (number) => {},
   startGuessing: () => {},
@@ -13,7 +14,7 @@ const CoordinatesContext = createContext({
 export const CoordinatesProvider = ({ children }) => {
   const [coordinates, setCoordinates] = useState(createCoordinatesObject());
   const [currentCoord, setCurrentCoord] = useState("");
-  const [isGuessing, setIsGuessing] = useState(false);
+  const [isGuessing, setIsGuessing] = useState(gameStatus.waiting);
 
   const generateRamdomCoordinate = () => {
     const avaliableCoordinates = Object.entries(coordinates).filter(
@@ -21,10 +22,11 @@ export const CoordinatesProvider = ({ children }) => {
     );
     const ramdomIndex = Math.floor(Math.random() * avaliableCoordinates.length);
     setCurrentCoord(avaliableCoordinates[ramdomIndex][0]);
+    setIsGuessing(gameStatus.showing);
   };
 
   const startGuessing = () => {
-    setIsGuessing(true);
+    setIsGuessing(gameStatus.guessing);
   };
 
   const guessCoordinate = (coord) => {
@@ -37,7 +39,7 @@ export const CoordinatesProvider = ({ children }) => {
       console.log("nones");
     }
     setCurrentCoord("?");
-    setIsGuessing(false);
+    setIsGuessing(gameStatus.waiting);
   };
 
   return (

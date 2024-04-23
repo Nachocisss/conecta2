@@ -1,29 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Card.css";
 import { useCoordinate } from "../../Contexts/CoordinatesContext.tsx";
+import gameStatus from "../../Utils/gameStatus.tsx";
 
 const Card = () => {
   const { generateRamdomCoordinate, isGuessing, startGuessing, currentCoord } =
     useCoordinate();
-  const [showCard, setShowCard] = useState(false);
+  const localisGuessing = isGuessing === gameStatus.guessing;
+  const localIsShowing = isGuessing === gameStatus.showing;
+  const localIsWaiting = isGuessing === gameStatus.waiting;
 
   const clickHandler = () => {
-    if (showCard) {
+    if (localIsShowing) {
       startGuessing();
-      setShowCard(false);
     } else {
+      console.log(isGuessing);
       generateRamdomCoordinate();
-      setShowCard(true);
     }
   };
 
   return (
     <div
       className="cardContainer"
-      onClick={isGuessing ? () => console.log(currentCoord) : clickHandler}
+      onClick={localisGuessing ? () => console.log(currentCoord) : clickHandler}
     >
       <div className="textContainer">
-        <span className="cardText">{showCard ? currentCoord : "?"}</span>
+        <span className="cardText">{localIsShowing ? currentCoord : "?"}</span>
       </div>
     </div>
   );
