@@ -3,7 +3,7 @@ import { createCoordinatesObject } from "../Utils/createCoordinatesObject.tsx";
 
 const CoordinatesContext = createContext({
   coordinates: {},
-  currentCoord: "?",
+  currentCoord: "",
   isGuessing: false,
   generateRamdomCoordinate: () => {},
   guessCoordinate: (number) => {},
@@ -12,12 +12,12 @@ const CoordinatesContext = createContext({
 
 export const CoordinatesProvider = ({ children }) => {
   const [coordinates, setCoordinates] = useState(createCoordinatesObject());
-  const [currentCoord, setCurrentCoord] = useState("?");
+  const [currentCoord, setCurrentCoord] = useState("");
   const [isGuessing, setIsGuessing] = useState(false);
 
   const generateRamdomCoordinate = () => {
     const avaliableCoordinates = Object.entries(coordinates).filter(
-      ([_coordenada, estado]) => !estado
+      ([_c, status]) => !status
     );
     const ramdomIndex = Math.floor(Math.random() * avaliableCoordinates.length);
     setCurrentCoord(avaliableCoordinates[ramdomIndex][0]);
