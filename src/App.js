@@ -1,12 +1,12 @@
 import GameScreen from "./Screens/GameScreen.tsx";
 import "./App.css";
-import Header from "./Screens/Header.tsx";
+import HeaderScreen from "./Screens/HeaderScreen/HeaderScreen.tsx";
 import { CoordinatesProvider } from "./Contexts/CoordinatesContext.tsx";
 
 function App() {
   return (
     <CoordinatesProvider>
-      <Header />
+      <HeaderScreen />
       <GameScreen />
     </CoordinatesProvider>
   );

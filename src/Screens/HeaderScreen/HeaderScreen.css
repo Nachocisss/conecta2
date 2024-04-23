@@ -1,0 +1,26 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  text-align: center;
+  margin: 4px 32px;
+}
+.headerTitleContainer {
+}
+.headerTitle {
+  font-size: 40px;
+  color: aliceblue;
+}
+.headerCounterContainer {
+  display: flex;
+}
+.headerCounterContainer h2 {
+  font-size: 32px;
+  margin: auto 32px;
+}
+.headerCounterTitleTeam1 {
+  color: #2aba5f;
+}
+.headerCounterTitleTeam2 {
+  color: rgb(153, 24, 148);
+}

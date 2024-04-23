@@ -1,6 +1,7 @@
 import React from "react";
+import "./HeaderScreen.css";
 
-const Header = () => {
+const HeaderScreen = () => {
   return (
     <div className="headerContainer">
       <h1 className="headerTitle">Conecta2</h1>
@@ -12,4 +13,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderScreen;
