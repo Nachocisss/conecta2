@@ -14,9 +14,12 @@
 .headerCounterContainer {
   display: flex;
 }
+.headerCounterTeamContainer {
+  margin: auto 32px;
+}
 .headerCounterContainer h2 {
   font-size: 32px;
-  margin: auto 32px;
+  font-weight: 800;
 }
 .headerCounterTitleTeam1 {
   color: #2aba5f;

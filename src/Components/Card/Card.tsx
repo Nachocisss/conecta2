@@ -8,13 +8,11 @@ const Card = () => {
     useCoordinate();
   const localisGuessing = isGuessing === gameStatus.guessing;
   const localIsShowing = isGuessing === gameStatus.showing;
-  const localIsWaiting = isGuessing === gameStatus.waiting;
 
   const clickHandler = () => {
     if (localIsShowing) {
       startGuessing();
     } else {
-      console.log(isGuessing);
       generateRamdomCoordinate();
     }
   };
