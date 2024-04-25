@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext } from "react";
 import { createCoordinatesObject } from "../Utils/createCoordinatesObject.tsx";
-import gameStatus from "../Utils/gameStatus.tsx";
+import { cellStatus, gameStatus } from "../Utils/gameStatus.tsx";
 
 const CoordinatesContext = createContext({
   coordinates: {},
@@ -26,7 +26,7 @@ export const CoordinatesProvider = ({ children }) => {
 
   const generateRamdomCoordinate = () => {
     const avaliableCoordinates = Object.entries(coordinates).filter(
-      ([_c, status]) => !status
+      ([_c, status]) => status === cellStatus.avaliable
     );
     const ramdomIndex = Math.floor(Math.random() * avaliableCoordinates.length);
     setCurrentCoord(avaliableCoordinates[ramdomIndex][0]);
@@ -41,14 +41,11 @@ export const CoordinatesProvider = ({ children }) => {
     if (coord === currentCoord) {
       setCoordinates((prevCoord) => ({
         ...prevCoord,
-        [coord]: true,
+        [coord]: turn,
       }));
       setScores((prevScores) => {
         const updatedScores = { ...prevScores };
-        const team = turn ? 0 : 1;
-        console.log(updatedScores);
-
-        updatedScores[team] += 1;
+        updatedScores[turn] += 1;
         return updatedScores;
       });
     } else {

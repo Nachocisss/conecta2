@@ -1,3 +1,5 @@
+import { cellStatus } from "./gameStatus.tsx";
+
 const letters = ["A", "B", "C", "D", "E"];
 
 const createCoordinatesObject = () => {
@@ -7,7 +9,7 @@ const createCoordinatesObject = () => {
   letters.forEach((letter) => {
     numbers.forEach((number) => {
       const coordinate = letter + number;
-      coordinates[coordinate] = false;
+      coordinates[coordinate] = cellStatus.avaliable;
     });
   });
 

@@ -11,7 +11,7 @@ const HeaderScreen = () => {
     return (
       <div className="headerCounterTeamContainer">
         <h2 className={`headerCounterTitleTeam${team}`}>
-          Team {team}: {scores[`team${team}`]} points
+          Team {team}: {scores[team - 1]} points
         </h2>
         {turn + 1 === team && <div className="headerTurnText"></div>}
       </div>

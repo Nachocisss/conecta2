@@ -3,4 +3,10 @@ const gameStatus = {
   waiting: "WAITING",
   showing: "SHOWING",
 };
-export default gameStatus;
+
+const cellStatus = {
+  avaliable: "AVALIABLE",
+  team1: "TEAM1",
+  team2: "TEAM2",
+};
+export { gameStatus, cellStatus };

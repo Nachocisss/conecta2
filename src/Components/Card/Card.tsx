@@ -1,7 +1,7 @@
 import React from "react";
 import "./Card.css";
 import { useCoordinate } from "../../Contexts/CoordinatesContext.tsx";
-import gameStatus from "../../Utils/gameStatus.tsx";
+import { gameStatus } from "../../Utils/gameStatus.tsx";
 
 const Card = () => {
   const { generateRamdomCoordinate, isGuessing, startGuessing, currentCoord } =

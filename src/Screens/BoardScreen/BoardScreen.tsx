@@ -2,7 +2,7 @@ import React from "react";
 import Board from "../../Components/Board/Board/Board.tsx";
 import "./BoardScreen.css";
 import { useCoordinate } from "../../Contexts/CoordinatesContext.tsx";
-import gameStatus from "../../Utils/gameStatus.tsx";
+import { gameStatus } from "../../Utils/gameStatus.tsx";
 
 const BoardScreen = () => {
   const { isGuessing } = useCoordinate();
