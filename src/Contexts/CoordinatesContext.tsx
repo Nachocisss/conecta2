@@ -9,12 +9,20 @@ const CoordinatesContext = createContext({
   generateRamdomCoordinate: () => {},
   guessCoordinate: (number) => {},
   startGuessing: () => {},
+  turn: 0,
+  scores: [0, 0],
 });
 
 export const CoordinatesProvider = ({ children }) => {
   const [coordinates, setCoordinates] = useState(createCoordinatesObject());
   const [currentCoord, setCurrentCoord] = useState("");
+  const [turn, setTurn] = useState(0);
+  const [scores, setScores] = useState([0, 0]);
   const [isGuessing, setIsGuessing] = useState(gameStatus.waiting);
+
+  const changeTurn = () => {
+    setTurn(turn === 0 ? 1 : 0);
+  };
 
   const generateRamdomCoordinate = () => {
     const avaliableCoordinates = Object.entries(coordinates).filter(
@@ -35,10 +43,19 @@ export const CoordinatesProvider = ({ children }) => {
         ...prevCoord,
         [coord]: true,
       }));
+      setScores((prevScores) => {
+        const updatedScores = { ...prevScores };
+        const team = turn ? 0 : 1;
+        console.log(updatedScores);
+
+        updatedScores[team] += 1;
+        return updatedScores;
+      });
     } else {
       console.log("nones");
     }
     setCurrentCoord("?");
+    changeTurn();
     setIsGuessing(gameStatus.waiting);
   };
 
@@ -51,6 +68,8 @@ export const CoordinatesProvider = ({ children }) => {
         currentCoord,
         generateRamdomCoordinate,
         startGuessing,
+        turn,
+        scores,
       }}
     >
       {children}
