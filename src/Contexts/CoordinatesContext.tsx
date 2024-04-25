@@ -11,6 +11,7 @@ const CoordinatesContext = createContext({
   startGuessing: () => {},
   turn: 0,
   scores: [0, 0],
+  screenMessage: "Team 1 pick a Card!",
 });
 
 export const CoordinatesProvider = ({ children }) => {
@@ -19,9 +20,13 @@ export const CoordinatesProvider = ({ children }) => {
   const [turn, setTurn] = useState(0);
   const [scores, setScores] = useState([0, 0]);
   const [isGuessing, setIsGuessing] = useState(gameStatus.waiting);
+  const [screenMessage, setScreenMessage] = useState("Team 1 pick a Card!");
+
+  const otherTeam = turn === 0 ? 1 : 0;
 
   const changeTurn = () => {
-    setTurn(turn === 0 ? 1 : 0);
+    setIsGuessing(gameStatus.waiting);
+    setTurn(otherTeam);
   };
 
   const generateRamdomCoordinate = () => {
@@ -31,6 +36,7 @@ export const CoordinatesProvider = ({ children }) => {
     const ramdomIndex = Math.floor(Math.random() * avaliableCoordinates.length);
     setCurrentCoord(avaliableCoordinates[ramdomIndex][0]);
     setIsGuessing(gameStatus.showing);
+    setScreenMessage(`Now hide the card and give a clue for your team!`);
   };
 
   const startGuessing = () => {
@@ -48,12 +54,11 @@ export const CoordinatesProvider = ({ children }) => {
         updatedScores[turn] += 1;
         return updatedScores;
       });
+      setScreenMessage(`Good Job Team ${turn + 1}!`);
     } else {
-      console.log("nones");
+      setScreenMessage(`Ups! Turn of team ${otherTeam + 1}`);
     }
-    setCurrentCoord("?");
     changeTurn();
-    setIsGuessing(gameStatus.waiting);
   };
 
   return (
@@ -67,6 +72,7 @@ export const CoordinatesProvider = ({ children }) => {
         startGuessing,
         turn,
         scores,
+        screenMessage,
       }}
     >
       {children}

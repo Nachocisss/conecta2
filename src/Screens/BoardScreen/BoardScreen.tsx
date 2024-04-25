@@ -5,7 +5,7 @@ import { useCoordinate } from "../../Contexts/CoordinatesContext.tsx";
 import { gameStatus } from "../../Utils/gameStatus.tsx";
 
 const BoardScreen = () => {
-  const { isGuessing } = useCoordinate();
+  const { isGuessing, screenMessage } = useCoordinate();
   const localisGuessing = isGuessing === gameStatus.guessing;
   console.log(!localisGuessing);
 
@@ -13,7 +13,7 @@ const BoardScreen = () => {
     <div className={localisGuessing ? "boardScreen" : "boardScreenNotGuessing"}>
       {!localisGuessing && (
         <div className="boardTextContainer">
-          <h2 className="boardText">Try a new card!</h2>
+          <h2 className="boardText">{screenMessage}</h2>
         </div>
       )}
       <Board />
