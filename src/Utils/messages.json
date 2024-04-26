@@ -1,0 +1,13 @@
+{
+  "card": {
+    "pickUp": "Click & Pick Up",
+    "hide": "Click To Hide",
+    "guess": "Time To Guess!"
+  },
+  "board": {
+    "start": "Let's Start! One player of Team 1 pick a card. The rest of the team Close their eyes!",
+    "hide": "Now hide the card and give a clue for your team!",
+    "good": "Good Job Team",
+    "ups": "Ups! Turn of team"
+  }
+}

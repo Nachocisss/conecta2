@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext } from "react";
 import { createCoordinatesObject } from "../Utils/createCoordinatesObject.tsx";
 import { cellStatus, gameStatus } from "../Utils/gameStatus.tsx";
+import texts from "../Utils/messages.json";
 
 const CoordinatesContext = createContext({
   coordinates: {},
@@ -11,7 +12,7 @@ const CoordinatesContext = createContext({
   startGuessing: () => {},
   turn: 0,
   scores: [0, 0],
-  screenMessage: "Team 1 pick a Card!",
+  screenMessage: `${texts.board.start}`,
 });
 
 export const CoordinatesProvider = ({ children }) => {
@@ -20,7 +21,7 @@ export const CoordinatesProvider = ({ children }) => {
   const [turn, setTurn] = useState(0);
   const [scores, setScores] = useState([0, 0]);
   const [isGuessing, setIsGuessing] = useState(gameStatus.waiting);
-  const [screenMessage, setScreenMessage] = useState("Team 1 pick a Card!");
+  const [screenMessage, setScreenMessage] = useState(`${texts.board.start}`);
 
   const otherTeam = turn === 0 ? 1 : 0;
 
@@ -36,7 +37,7 @@ export const CoordinatesProvider = ({ children }) => {
     const ramdomIndex = Math.floor(Math.random() * avaliableCoordinates.length);
     setCurrentCoord(avaliableCoordinates[ramdomIndex][0]);
     setIsGuessing(gameStatus.showing);
-    setScreenMessage(`Now hide the card and give a clue for your team!`);
+    setScreenMessage(texts.board.hide);
   };
 
   const startGuessing = () => {
@@ -54,9 +55,9 @@ export const CoordinatesProvider = ({ children }) => {
         updatedScores[turn] += 1;
         return updatedScores;
       });
-      setScreenMessage(`Good Job Team ${turn + 1}!`);
+      setScreenMessage(`${texts.board.good}}${turn + 1}`);
     } else {
-      setScreenMessage(`Ups! Turn of team ${otherTeam + 1}`);
+      setScreenMessage(`${texts.board.ups} ${otherTeam + 1}`);
     }
     changeTurn();
   };
