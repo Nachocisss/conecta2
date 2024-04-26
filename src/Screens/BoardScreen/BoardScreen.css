@@ -26,12 +26,31 @@
   height: 100%;
   z-index: 1;
 }
-.boardText {
+.boardTextINFO {
   margin: 100px;
   padding: 32px;
   font-size: 40px;
   font-weight: 800;
   color: white;
   background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 16px;
+}
+.boardTextWRONG {
+  margin: 100px;
+  padding: 32px;
+  font-size: 40px;
+  font-weight: 800;
+  color: white;
+  background-color: rgb(198, 44, 44, 0.8);
+  border-radius: 16px;
+}
+
+.boardTextCORRECT {
+  margin: 100px;
+  padding: 32px;
+  font-size: 40px;
+  font-weight: 800;
+  color: white;
+  background-color: hsla(142, 63%, 45%, 0.8);
   border-radius: 16px;
 }

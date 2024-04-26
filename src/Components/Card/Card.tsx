@@ -30,11 +30,15 @@ const Card = () => {
       onClick={localisGuessing ? () => {} : clickHandler}
     >
       <div className="textContainer">
-        <span className="cardText">{localIsShowing ? currentCoord : "?"}</span>
         {!localisGuessing && (
-          <span className="cardTextSubtitle">
-            {localIsWaiting ? texts.card.pickUp : texts.card.hide}
-          </span>
+          <>
+            <span className="cardText">
+              {localIsShowing ? currentCoord : "?"}
+            </span>
+            <span className="cardTextSubtitle">
+              {localIsWaiting ? texts.card.pickUp : texts.card.hide}
+            </span>
+          </>
         )}
         {localisGuessing && (
           <>

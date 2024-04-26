@@ -7,12 +7,13 @@ import { gameStatus } from "../../Utils/gameStatus.tsx";
 const BoardScreen = () => {
   const { isGuessing, screenMessage } = useCoordinate();
   const localisGuessing = isGuessing === gameStatus.guessing;
-
   return (
     <div className={localisGuessing ? "boardScreen" : "boardScreenNotGuessing"}>
       {!localisGuessing && (
         <div className="boardTextContainer">
-          <h2 className="boardText">{screenMessage}</h2>
+          <h2 className={`boardText${screenMessage.status}`}>
+            {screenMessage.message}
+          </h2>
         </div>
       )}
       <Board />

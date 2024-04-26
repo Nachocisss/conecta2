@@ -9,4 +9,10 @@ const cellStatus = {
   team1: "TEAM1",
   team2: "TEAM2",
 };
-export { gameStatus, cellStatus };
+
+const messageStatus = {
+  info: "INFO",
+  correct: "CORRECT",
+  wrong: "WRONG",
+};
+export { gameStatus, cellStatus, messageStatus };

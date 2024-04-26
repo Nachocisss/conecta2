@@ -6,19 +6,23 @@ import { cellStatus } from "../../../Utils/gameStatus.tsx";
 const BoardCell = (props) => {
   const { coordinates, guessCoordinate } = useCoordinate();
   const coordinateString = props.tag;
-  const coorPressable = coordinates[coordinateString] === cellStatus.avaliable;
+  const coordAvaliable = coordinates[coordinateString] === cellStatus.avaliable;
+  if (!coordAvaliable) {
+    console.log(`boardCellTeam${coordinates[coordinateString] + 1}`, "aqui");
+  }
 
   return (
     <div
-      className="boardCell"
+      className={
+        coordAvaliable
+          ? "boardCell"
+          : `boardCellTeam${coordinates[coordinateString] + 1}`
+      }
       onClick={
-        coorPressable ? () => guessCoordinate(coordinateString) : () => {}
+        coordAvaliable ? () => guessCoordinate(coordinateString) : () => {}
       }
     >
       <span>{coordinateString}</span>
-      {!coorPressable && (
-        <span> punto de team: {coordinates[coordinateString] + 1}</span>
-      )}
     </div>
   );
 };

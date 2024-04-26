@@ -1,7 +1,9 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import { createCoordinatesObject } from "../Utils/createCoordinatesObject.tsx";
-import { cellStatus, gameStatus } from "../Utils/gameStatus.tsx";
+import { cellStatus, gameStatus, messageStatus } from "../Utils/gameStatus.tsx";
 import texts from "../Utils/messages.json";
+import { generate } from "random-words";
+import defaultWords from "../Utils/defaultWords.tsx";
 
 const CoordinatesContext = createContext({
   coordinates: {},
@@ -12,7 +14,11 @@ const CoordinatesContext = createContext({
   startGuessing: () => {},
   turn: 0,
   scores: [0, 0],
-  screenMessage: `${texts.board.start}`,
+  screenMessage: {
+    message: `${texts.board.start}`,
+    status: messageStatus.info,
+  },
+  words: defaultWords(),
 });
 
 export const CoordinatesProvider = ({ children }) => {
@@ -21,7 +27,20 @@ export const CoordinatesProvider = ({ children }) => {
   const [turn, setTurn] = useState(0);
   const [scores, setScores] = useState([0, 0]);
   const [isGuessing, setIsGuessing] = useState(gameStatus.waiting);
-  const [screenMessage, setScreenMessage] = useState(`${texts.board.start}`);
+  const [screenMessage, setScreenMessage] = useState({
+    message: `${texts.board.start}`,
+    status: messageStatus.info,
+  });
+  const [words, setWords] = useState([""]);
+
+  useEffect(() => {
+    const generatedWords = generate(10);
+    if (Array.isArray(generatedWords)) {
+      setWords(generatedWords);
+    } else {
+      setWords(defaultWords());
+    }
+  }, []);
 
   const otherTeam = turn === 0 ? 1 : 0;
 
@@ -37,7 +56,7 @@ export const CoordinatesProvider = ({ children }) => {
     const ramdomIndex = Math.floor(Math.random() * avaliableCoordinates.length);
     setCurrentCoord(avaliableCoordinates[ramdomIndex][0]);
     setIsGuessing(gameStatus.showing);
-    setScreenMessage(texts.board.hide);
+    setScreenMessage({ message: texts.board.hide, status: messageStatus.info });
   };
 
   const startGuessing = () => {
@@ -55,9 +74,15 @@ export const CoordinatesProvider = ({ children }) => {
         updatedScores[turn] += 1;
         return updatedScores;
       });
-      setScreenMessage(`${texts.board.good}}${turn + 1}`);
+      setScreenMessage({
+        message: `${texts.board.good}${turn + 1}`,
+        status: messageStatus.correct,
+      });
     } else {
-      setScreenMessage(`${texts.board.ups} ${otherTeam + 1}`);
+      setScreenMessage({
+        message: `${texts.board.ups} ${otherTeam + 1}`,
+        status: messageStatus.wrong,
+      });
     }
     changeTurn();
   };
@@ -74,6 +99,7 @@ export const CoordinatesProvider = ({ children }) => {
         turn,
         scores,
         screenMessage,
+        words,
       }}
     >
       {children}
