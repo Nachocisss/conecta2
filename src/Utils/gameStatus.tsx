@@ -11,8 +11,10 @@ const cellStatus = {
 };
 
 const messageStatus = {
+  start: "START",
   info: "INFO",
   correct: "CORRECT",
   wrong: "WRONG",
+  end: "END",
 };
 export { gameStatus, cellStatus, messageStatus };

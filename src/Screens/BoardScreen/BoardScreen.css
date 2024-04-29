@@ -29,7 +29,7 @@
 .boardTextINFO {
   margin: 100px;
   padding: 32px;
-  font-size: 40px;
+  font-size: 3vh;
   font-weight: 800;
   color: white;
   background-color: rgba(0, 0, 0, 0.8);
@@ -38,7 +38,7 @@
 .boardTextWRONG {
   margin: 100px;
   padding: 32px;
-  font-size: 40px;
+  font-size: 3vh;
   font-weight: 800;
   color: white;
   background-color: rgb(198, 44, 44, 0.8);
@@ -48,9 +48,12 @@
 .boardTextCORRECT {
   margin: 100px;
   padding: 32px;
-  font-size: 40px;
+  font-size: 3vh;
   font-weight: 800;
   color: white;
   background-color: hsla(142, 63%, 45%, 0.8);
   border-radius: 16px;
+}
+.startText {
+  font-size: 18px;
 }

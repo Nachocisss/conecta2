@@ -16,7 +16,7 @@ const CoordinatesContext = createContext({
   scores: [0, 0],
   screenMessage: {
     message: `${texts.board.start}`,
-    status: messageStatus.info,
+    status: messageStatus.start,
   },
   words: defaultWords(),
 });
@@ -29,7 +29,7 @@ export const CoordinatesProvider = ({ children }) => {
   const [isGuessing, setIsGuessing] = useState(gameStatus.waiting);
   const [screenMessage, setScreenMessage] = useState({
     message: `${texts.board.start}`,
-    status: messageStatus.info,
+    status: messageStatus.start,
   });
   const [words, setWords] = useState([""]);
 
@@ -56,11 +56,18 @@ export const CoordinatesProvider = ({ children }) => {
     const ramdomIndex = Math.floor(Math.random() * avaliableCoordinates.length);
     setCurrentCoord(avaliableCoordinates[ramdomIndex][0]);
     setIsGuessing(gameStatus.showing);
-    setScreenMessage({ message: texts.board.hide, status: messageStatus.info });
+    setScreenMessage({
+      message: texts.board.hide,
+      status: messageStatus.start,
+    });
   };
 
   const startGuessing = () => {
     setIsGuessing(gameStatus.guessing);
+  };
+
+  const checkWinner = () => {
+    console.log(coordinates);
   };
 
   const guessCoordinate = (coord) => {
@@ -78,6 +85,7 @@ export const CoordinatesProvider = ({ children }) => {
         message: `${texts.board.good}${turn + 1}`,
         status: messageStatus.correct,
       });
+      checkWinner();
     } else {
       setScreenMessage({
         message: `${texts.board.ups} ${otherTeam + 1}`,

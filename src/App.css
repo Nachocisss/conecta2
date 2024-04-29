@@ -1,10 +1,20 @@
 body {
-  background-color: #282c34;
+  background: rgb(35, 38, 45);
+  background: linear-gradient(
+    156deg,
+    rgba(35, 38, 45, 1) 0%,
+    rgba(100, 108, 126, 1) 66%
+  );
 }
 .App {
-  background-color: #4c5870;
+  background: rgb(35, 38, 45);
+  background: linear-gradient(
+    324deg,
+    rgba(35, 38, 45, 1) 0%,
+    rgba(100, 108, 126, 1) 66%
+  );
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .App {
     display: flex;
   }

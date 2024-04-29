@@ -1,0 +1,41 @@
+.wordCellContainer {
+  background-color: #19212159;
+  padding: 3px 2px;
+  margin: 10px 3px;
+  border-radius: 10px;
+  border: 1px solid white;
+  align-content: center;
+  text-align: center;
+  width: 10vh;
+  height: 5vh;
+}
+.wordCellContainerVertical {
+  background-color: #19212159;
+  margin-top: 3vh;
+  padding: 3px;
+  border-radius: 10px;
+  border: 1px solid white;
+  align-content: center;
+  text-align: center;
+  width: 10vh;
+  height: 5vh;
+  overflow: hidden;
+  rotate: -90deg;
+}
+
+.wordCellText {
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.wordDummyCellContainer {
+  background-color: transparent;
+  margin-right: 20px;
+  margin-bottom: 3px;
+  border-radius: 10px;
+  align-content: center;
+  text-align: center;
+  width: 21vh;
+  height: 5vh;
+}

@@ -5,6 +5,12 @@
   text-align: center;
   margin: 4px 32px;
 }
+
+@media (min-width: 1024px) {
+  .headerContainer {
+  }
+}
+
 .headerTitle {
   font-size: 40px;
   color: aliceblue;
@@ -15,7 +21,7 @@
 .headerCounterTeamContainer {
   position: relative;
   display: flex;
-  margin: 0px 32px;
+  margin: 0px 12px;
 }
 .headerCounterContainer h2 {
   font-size: 32px;
@@ -29,9 +35,9 @@
 }
 .headerTurnText {
   margin-top: 10px;
-  background-color: rgb(198, 44, 44);
+  background-color: rgb(229, 14, 14);
   border-radius: 40px;
-  height: 15px;
-  width: 15px;
+  height: 12px;
+  width: 12px;
   padding: 5px;
 }

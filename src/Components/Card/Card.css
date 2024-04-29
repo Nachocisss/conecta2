@@ -2,15 +2,25 @@
   aspect-ratio: 1/1.5;
   width: 60%;
   border-radius: 10px;
-  border: 10px solid #a63979;
-  background-color: #ffffff9d;
+  border: 5px solid #a63979;
+  background: rgb(100, 98, 98);
+  background: linear-gradient(
+    56deg,
+    rgba(100, 98, 98, 1) 8%,
+    rgba(191, 191, 191, 1) 100%
+  );
   display: flex;
   margin: 20px auto;
 }
 
 .cardContainer:hover {
-  border: 14px solid #a63979;
-  background-color: #c7bfbf9d;
+  border: 7px solid #a63979;
+  background: rgb(100, 98, 98);
+  background: linear-gradient(
+    56deg,
+    rgba(100, 98, 98, 1) 8%,
+    rgba(191, 191, 191, 1) 100%
+  );
   display: flex;
   margin: 20px auto;
 }
@@ -27,6 +37,7 @@
 }
 .cardTextSubtitle {
   font-size: 30px;
+  font-weight: 600;
   margin-left: 16px;
   margin-right: 16px;
   margin-bottom: 8px;

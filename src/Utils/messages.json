@@ -5,7 +5,14 @@
     "guess": "Time To Guess!"
   },
   "board": {
-    "start": "Let's Start! One player of Team 1 pick a card. The rest of the team Close their eyes!",
+    "start": "",
+    "startInstructions": [
+      "How to Play!.",
+      "One player from the team sees the card with the coordinate.",
+      "Their mission is to give their team only one word so they can guess which coordinate is being referred to by crossing the clue words on the board.",
+      "When the team reaches a consensus, they must select their option.",
+      "Then it will be the next team's turn. When there are 5 coordinates left undiscovered, the game ends with the team that has scored the most points."
+    ],
     "hide": "Now hide the card and give a clue for your team!",
     "good": "Good Job Team ",
     "ups": "Ups! Turn of team"
