@@ -32,6 +32,7 @@ export const CoordinatesProvider = ({ children }) => {
     status: messageStatus.start,
   });
   const [words, setWords] = useState([""]);
+  const SPACES_TO_END_GAME = 5;
 
   useEffect(() => {
     const generatedWords = generate(10);
@@ -49,26 +50,44 @@ export const CoordinatesProvider = ({ children }) => {
     setTurn(otherTeam);
   };
 
-  const generateRamdomCoordinate = () => {
-    const avaliableCoordinates = Object.entries(coordinates).filter(
+  const onlyAvaliablesCoordinates = () => {
+    return Object.entries(coordinates).filter(
       ([_c, status]) => status === cellStatus.avaliable
     );
-    const ramdomIndex = Math.floor(Math.random() * avaliableCoordinates.length);
-    setCurrentCoord(avaliableCoordinates[ramdomIndex][0]);
-    setIsGuessing(gameStatus.showing);
-    setScreenMessage({
-      message: texts.board.hide,
-      status: messageStatus.start,
-    });
   };
 
   const startGuessing = () => {
     setIsGuessing(gameStatus.guessing);
   };
 
-  const checkWinner = () => {
-    console.log(coordinates);
+  const generateRamdomCoordinate = () => {
+    const avaliableCoordinates = onlyAvaliablesCoordinates();
+    const ramdomIndex = Math.floor(Math.random() * avaliableCoordinates.length);
+    setCurrentCoord(avaliableCoordinates[ramdomIndex][0]);
+    setIsGuessing(gameStatus.showing);
+    setScreenMessage({
+      message: texts.board.hide,
+      status: messageStatus.info,
+    });
   };
+
+  const checkWinner = () => {
+    const avaliablesNumber = onlyAvaliablesCoordinates().length;
+
+    if (avaliablesNumber === SPACES_TO_END_GAME) {
+      const winnerMessage = `Team ${
+        scores[0] > scores[1] ? 1 : 2
+      } is the Winner, Congrats!`;
+      setScreenMessage({
+        message: winnerMessage,
+        status: messageStatus.end,
+      });
+      setIsGuessing(gameStatus.end);
+    }
+  };
+  useEffect(() => {
+    checkWinner();
+  }, [scores]);
 
   const guessCoordinate = (coord) => {
     if (coord === currentCoord) {
@@ -85,7 +104,6 @@ export const CoordinatesProvider = ({ children }) => {
         message: `${texts.board.good}${turn + 1}`,
         status: messageStatus.correct,
       });
-      checkWinner();
     } else {
       setScreenMessage({
         message: `${texts.board.ups} ${otherTeam + 1}`,

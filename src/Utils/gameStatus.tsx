@@ -2,6 +2,7 @@ const gameStatus = {
   guessing: "GUESSING",
   waiting: "WAITING",
   showing: "SHOWING",
+  end: "END",
 };
 
 const cellStatus = {

@@ -12,11 +12,13 @@ const Card = () => {
     currentCoord,
     turn,
   } = useCoordinate();
-  const localisGuessing = isGuessing === gameStatus.guessing;
+
+  const localIsGuessing = isGuessing === gameStatus.guessing;
   const localIsShowing = isGuessing === gameStatus.showing;
   const localIsWaiting = isGuessing === gameStatus.waiting;
+  const endGame = isGuessing === gameStatus.end;
 
-  const clickHandler = () => {
+  const handleClick = () => {
     if (localIsShowing) {
       startGuessing();
     } else {
@@ -24,29 +26,35 @@ const Card = () => {
     }
   };
 
+  const renderCardContent = () => {
+    if (localIsGuessing) {
+      return (
+        <>
+          <span className="cardTextSubtitle">{`Team ${turn + 1}`}</span>
+          <span className="cardTextSubtitle">{texts.card.guess}</span>
+        </>
+      );
+    } else if (!endGame) {
+      return (
+        <>
+          <span className="cardText">
+            {localIsShowing ? currentCoord : "?"}
+          </span>
+          <span className="cardTextSubtitle">
+            {localIsWaiting ? texts.card.pickUp : texts.card.hide}
+          </span>
+        </>
+      );
+    }
+    return <span className="cardText">End</span>;
+  };
+
   return (
     <div
       className="cardContainer"
-      onClick={localisGuessing ? () => {} : clickHandler}
+      onClick={!localIsGuessing && !endGame ? handleClick : undefined}
     >
-      <div className="textContainer">
-        {!localisGuessing && (
-          <>
-            <span className="cardText">
-              {localIsShowing ? currentCoord : "?"}
-            </span>
-            <span className="cardTextSubtitle">
-              {localIsWaiting ? texts.card.pickUp : texts.card.hide}
-            </span>
-          </>
-        )}
-        {localisGuessing && (
-          <>
-            <span className="cardTextSubtitle">{`Team ${turn + 1}`}</span>
-            <span className="cardTextSubtitle">{texts.card.guess}</span>
-          </>
-        )}
-      </div>
+      <div className="textContainer">{renderCardContent()}</div>
     </div>
   );
 };

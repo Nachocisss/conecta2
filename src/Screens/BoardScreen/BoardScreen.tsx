@@ -8,7 +8,8 @@ import messages from "../../Utils/messages.json";
 const BoardScreen = () => {
   const { isGuessing, screenMessage } = useCoordinate();
   const localisGuessing = isGuessing === gameStatus.guessing;
-  const isStart = screenMessage.status === messageStatus.start;
+  let isStart = screenMessage.status === messageStatus.start;
+  console.log(screenMessage.status);
 
   const textStart = (
     <h2 className={`boardTextINFO`}>
@@ -17,6 +18,7 @@ const BoardScreen = () => {
       })}
     </h2>
   );
+
   return (
     <div className={localisGuessing ? "boardScreen" : "boardScreenNotGuessing"}>
       {!localisGuessing && (

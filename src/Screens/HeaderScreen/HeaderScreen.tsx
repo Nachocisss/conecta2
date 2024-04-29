@@ -5,7 +5,6 @@ import { useCoordinate } from "../../Contexts/CoordinatesContext.tsx";
 const HeaderScreen = () => {
   const points = [0, 0];
   const { scores, turn } = useCoordinate();
-  console.log(scores);
 
   const teamScore = (team: number) => {
     return (

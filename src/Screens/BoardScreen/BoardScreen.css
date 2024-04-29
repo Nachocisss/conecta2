@@ -54,6 +54,15 @@
   background-color: hsla(142, 63%, 45%, 0.8);
   border-radius: 16px;
 }
+.boardTextEND {
+  margin: 100px;
+  padding: 32px;
+  font-size: 3vh;
+  font-weight: 800;
+  color: white;
+  background-color: hsla(51, 82%, 44%, 0.8);
+  border-radius: 16px;
+}
 .startText {
   font-size: 18px;
 }

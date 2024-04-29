@@ -7,9 +7,6 @@ const BoardCell = (props) => {
   const { coordinates, guessCoordinate } = useCoordinate();
   const coordinateString = props.tag;
   const coordAvaliable = coordinates[coordinateString] === cellStatus.avaliable;
-  if (!coordAvaliable) {
-    console.log(`boardCellTeam${coordinates[coordinateString] + 1}`, "aqui");
-  }
 
   return (
     <div
